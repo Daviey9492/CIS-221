@@ -1,15 +1,64 @@
 <html>
-    <head><h1><b>SheCodes</b></h1>
-        <title>SheCodes</title>
-    </head>
-    <body>
-        <ul>
-            <li>Codes</li>
-            <li>Course</li>
-            <li>Stories</li>
-        </ul>
-    <hr>
-    <h2><b>More Info</b></h2>
-    </body>
+  <head>
+    <title>Registration form</title>
+  </head>
+  <link rel="stylesheet" href="style.css">
+  <body>
+    <form action=" " method="post" name="registration_form" style="">
+    <b>
+    <label for="fname">Full Name:</label><br>
+    <input type="text" id="fname" name="fname" placeholder="Full Name" required><br>
+    <label for="Username">Username:</label><br>
+    <input type="text" id="Username" name="Username" placeholder="Username"><br>
+    <label for="email">Email Address:</label><br>
+    <input type="text" id="email" name="email" placeholder="example@gmail.com" ><br>
+    <label for="contact">Phone Number:</label><br>
+    <input type="text" id="contact" name="contact" placeholder="07XXXXXXXX"><br>
+    <label for="password">Create Password:</label><br>
+    <input type="password" name="password" id="password"><br>
+    <label for="password">Confirm Password:</label><br>
+    <input type="password" name="password" id="password"><br></b>
+   <label><b>Select your gender:</b></label>
+<div class="radio-group">
+  <label><input type="radio" name="gender" id="male" value="male"> Male</label>
+  <label><input type="radio" name="gender" id="female" value="female"> Female</label>
+</div>
 
+    <label><b>Marital Status</b></label>
+<div class="radio-group">
+  <label><input type="radio" name="status" id="married" value="married"> Married</label>
+  <label><input type="radio" name="status" id="divorced" value="divorced"> Divorced</label>
+  <label><input type="radio" name="status" id="single" value="single"> Single</label>
+</div>
+
+    <label><b>Languages:</b></label>
+<div class="checkbox-group">
+  <label><input type="checkbox" name="lang" value="english"> English</label>
+  <label><input type="checkbox" name="lang" value="kiswahili"> Kiswahili</label>
+  <label><input type="checkbox" name="lang" value="french"> French</label>
+  <label><input type="checkbox" name="lang" value="german"> German</label>
+</div>
+    <label for="country"><b>Country:</b></label>
+<select id="country" name="country" required>
+  <option value="" disabled selected hidden>Select Country</option>
+  <option value="kenya">Kenya</option>
+  <option value="Tanzania">Tanzania</option>
+  <option value="Uganda">Uganda</option>
+</select><br>
+<label for="about"><b>Where did you here about us?</label><br>
+<label for="about">From :</b></label>
+<input list="about">
+<datalist id="about">
+  <option value="Social Media">
+  <option value="Our official website">
+  <option value="A friend">
+  </datalist><br>
+  <label for="upload"><b>Upload your CV in(<i>in pdf format</i>)</b></label><br>
+  <input type="file" name="upload" id="upload"><br>
+  <textarea name="comment" id="comment" placeholder="Send us your feedback" rows="10" cols="30"></textarea>
+  <button type="submit" value="submit">Submit Form </button>
+<button type="reset">Reset</button>
+  </form>
+
+  </body>
 </html>
