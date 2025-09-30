@@ -21,7 +21,7 @@ main {
 /* HEADER + NAVIGATION (Desktop Base) */
 header {
     display: flex;
-    justify-content: space-between; /* Title left, nav right */
+    justify-content: space-between; 
     align-items: center;
     background: var(--primary-color);
     color: #fff;
@@ -33,9 +33,12 @@ header {
     flex-wrap: wrap; 
 }
 
+/* RESPONSIVE HEADER TEXT SIZE */
 header h1 {
     margin: 0;
     color: #fff;
+    /* Uses viewport width (vw) for fluid scaling, clamped between 1.5em (min) and 5vw (max) */
+    font-size: clamp(1.5em, 5vw, 2.5em); 
 }
 
 nav a {
@@ -45,13 +48,14 @@ nav a {
     padding: 5px 10px;
     border-radius: 5px;
     transition: background 0.3s;
+    font-size: 1em; /* Base size for navigation links */
 }
 
 nav a:hover {
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* --- STANDARD SECTIONS --- */
+/* --- STANDARD SECTIONS (No changes below unless specifically related to the header) --- */
 
 /* PRODUCT SHOWCASE */
 .showcase {
@@ -327,28 +331,30 @@ footer {
         flex-direction: column; 
         align-items: flex-start;
         padding-bottom: 10px;
-        position: relative; /* Unstick the header to allow scrolling if navigation is very long */
+        position: relative; 
     }
     
     header h1 {
         margin-bottom: 10px;
-        width: 100%; /* Ensure title uses full width */
+        width: 100%; 
     }
 
     nav {
         width: 100%;
-        display: flex; /* Use flex for navigation links */
-        flex-direction: column; /* Stack the links */
+        display: flex; 
+        flex-direction: column; 
     }
     
     nav a {
         display: block; 
         margin: 5px 0;
-        padding: 10px; /* Increased padding for better tap area */
+        padding: 10px; 
         text-align: center;
         background: rgba(255, 255, 255, 0.15); 
         margin-left: 0;
         border-radius: 3px;
+        /* Smaller font size for navigation links on mobile */
+        font-size: 0.9em; 
     }
     
     /* 2. PRODUCT DETAIL FIX: Edge-to-edge layout with sticky button. */
@@ -374,7 +380,6 @@ footer {
     }
 
     .product-info {
-        /* Added large bottom padding (150px) to prevent content from being hidden by the sticky button/footer */
         padding: 0 15px 150px 15px; 
         flex: auto;
     }
