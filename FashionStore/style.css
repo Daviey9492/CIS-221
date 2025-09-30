@@ -1,116 +1,111 @@
 :root {
-    --primary-color: #5E35B1;      /* Purple accent */
-    --secondary-color: #8D6E63;    /* Warm earthy tone */
-    --background-color: #ffffff;   /* Page background */
-    --card-background: #f8f8f8;    /* Card containers */
-    --text-color: #333;            /* Default text */
+    /* Color scheme I picked – purple + warm earthy brown */
+    --primary-color: #5E35B1;
+    --secondary-color: #8D6E63;
+    --background-color: #fff;  /* was #ffffff – shortened */
+    --card-background: #f8f8f8;
+    --text-color: #333;
 }
 
+/* General page setup */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     background: var(--background-color);
     color: var(--text-color);
+    font-family: Arial, sans-serif; /* could swap later */
+    margin: 0;
+    padding: 0;
 }
 
 main {
-    padding-bottom: 50px; /* Leaves room for footer */
+    padding-bottom: 50px; /* footer space */
 }
 
-/* HEADER + NAVIGATION (Desktop Base) */
+/* ===== HEADER + NAVIGATION ===== */
 header {
     display: flex;
-    justify-content: space-between; 
     align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* added this for when nav wraps */
     background: var(--primary-color);
     color: #fff;
     padding: 15px 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,.1);
     position: sticky;
     top: 0;
     z-index: 100;
-    flex-wrap: wrap; 
 }
 
-/* RESPONSIVE HEADER TEXT SIZE */
 header h1 {
     margin: 0;
     color: #fff;
-    /* Uses viewport width (vw) for fluid scaling, clamped between 1.5em (min) and 5vw (max) */
-    font-size: clamp(1.5em, 5vw, 2.5em); 
+    /* fluid text scaling (clamp keeps it sensible) */
+    font-size: clamp(1.5em, 5vw, 2.5em);
 }
 
 nav a {
     color: #fff;
-    text-decoration: none;
     margin-left: 20px;
     padding: 5px 10px;
     border-radius: 5px;
-    transition: background 0.3s;
-    font-size: 1em; /* Base size for navigation links */
+    text-decoration: none;
+    font-size: 1em;
+    transition: background .3s ease;
 }
 
 nav a:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255,255,255,.2);
 }
 
-/* --- STANDARD SECTIONS --- */
-
-/* PRODUCT SHOWCASE */
+/* PRODUCT SHOWCASE AREA */
 .showcase {
-    max-width: 1200px;
+    text-align: center;
     margin: 40px auto;
     padding: 20px;
-    text-align: center;
+    max-width: 1200px;
 }
 
 h2 {
-    color: var(--primary-color);
     margin-bottom: 30px;
     font-size: 2em;
+    color: var(--primary-color);
 }
 
-/* CATEGORY TABS (UPDATED FOR HORIZONTAL SCROLLING) */
+/* CATEGORY TABS – scrollable row version */
 #category-tabs {
-    margin-bottom: 30px;
-    border-bottom: 2px solid #ddd;
     display: flex;
-    justify-content: flex-start; /* Aligns tabs to the left */
-    flex-wrap: nowrap; /* CRUCIAL: Prevents wrapping */
-    overflow-x: auto; /* CRUCIAL: Enables horizontal scrolling */
-    padding-bottom: 5px; /* Adds space for potential scrollbar */
-    -webkit-overflow-scrolling: touch; /* Improves scrolling performance on iOS */
-    margin-left: 0;
-    margin-right: 0;
+    justify-content: flex-start;
+    flex-wrap: nowrap; /* stop wrapping */
+    overflow-x: auto;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #ddd;
+    margin: 0; /* reset default margins */
+    -webkit-overflow-scrolling: touch; /* smoother iOS scroll */
 }
 
 .tab-button {
     background: transparent;
     border: none;
-    padding: 10px 15px; /* Slightly reduced horizontal padding */
+    flex-shrink: 0;
+    white-space: nowrap;
     cursor: pointer;
-    font-size: 1em; /* Reduced default font size slightly */
-    transition: 0.3s;
-    flex-shrink: 0; /* Prevents buttons from shrinking smaller than content */
-    white-space: nowrap; /* Ensures text doesn't wrap inside the button */
+    padding: 10px 15px;
+    font-size: 1em;
+    transition: .3s;
 }
 
-.tab-button:hover:not(.active) {
-    background: #eee;
-}
+.tab-button:hover:not(.active) { background: #eee; }
 
 .tab-button.active {
-    color: var(--primary-color);
     border-bottom: 3px solid var(--primary-color);
     font-weight: bold;
+    color: var(--primary-color);
 }
 
-/* PRODUCT GRID */
+/* PRODUCT GRID + CARDS */
 .tab-content {
     display: none;
     padding: 20px 0;
-    animation: fadeIn 0.5s;
+    animation: fadeIn .5s;
 }
 
 @keyframes fadeIn {
@@ -123,97 +118,97 @@ h2 {
     gap: 30px;
 }
 
-/* Main grid (all products) */
 .standard-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     justify-items: center;
 }
 
-/* Horizontal scroll for categories */
+/* hacky horizontal grid (used for scrollers) */
 .horizontal-scroll {
     grid-template-columns: repeat(13, 300px);
     overflow-x: auto;
     overflow-y: hidden;
-    padding-bottom: 10px;
     justify-content: start;
+    padding-bottom: 10px;
 }
 
 .product-card {
     background: var(--card-background);
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
     min-width: 250px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    transition: transform .3s, box-shadow .3s;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 15px rgba(0,0,0,.15);
 }
 
 .product-card img {
     width: 100%;
     height: 250px;
+    margin-bottom: 10px;
     object-fit: cover;
     border-radius: 4px;
-    margin-bottom: 10px;
 }
 
 .product-card h3 {
+    margin: 10px 0;
     font-size: 1.3em;
     color: var(--text-color);
-    margin: 10px 0;
 }
 
 .product-card .price {
-    color: var(--secondary-color);
-    font-size: 1.2em;
     font-weight: bold;
     margin: 10px 0 20px;
+    color: var(--secondary-color);
+    font-size: 1.2em;
 }
 
 /* BUTTONS */
 .button, .add-to-cart-btn {
     display: inline-block;
-    padding: 10px 20px;
     background: var(--secondary-color);
-    color: #fff;
-    border: none;
     border-radius: 5px;
-    cursor: pointer;
+    padding: 10px 20px;
+    border: none;
     font-size: 1em;
     text-align: center;
-    transition: background 0.3s;
     text-decoration: none;
+    cursor: pointer;
+    color: #fff;
+    transition: background .3s;
 }
 
-.button:hover, .add-to-cart-btn:hover {
+.button:hover,
+.add-to-cart-btn:hover {
     background: var(--primary-color);
 }
 
-/* BENEFITS */
+/* BENEFITS LIST */
 #benefits {
+    text-align: center;
     margin: 40px auto;
     max-width: 1200px;
     padding: 0 20px;
-    text-align: center;
 }
 
 .benefits-list {
-    max-width: 800px;
     margin: 20px auto;
+    max-width: 800px;
     text-align: left;
 }
 
 .benefits-list p {
-    background: #e8f5e9;
-    padding: 15px;
     margin: 15px 0;
-    border-left: 5px solid var(--primary-color);
-    border-radius: 5px;
+    padding: 15px;
     font-size: 1.1em;
+    background: #e8f5e9;
+    border-radius: 5px;
+    border-left: 5px solid var(--primary-color);
 }
 
 /* SALES TABLE */
@@ -223,17 +218,18 @@ h2 {
 }
 
 .sale-table {
-    width: 80%;
     margin: 20px auto;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    width: 80%;
     overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.1);
 }
 
-.sale-table th, .sale-table td {
+.sale-table th, 
+.sale-table td {
     padding: 15px;
-    text-align: left;
     border-bottom: 1px solid #100ce728;
+    text-align: left;
 }
 
 .sale-table th {
@@ -242,31 +238,26 @@ h2 {
     font-weight: bold;
 }
 
-.sale-table tbody tr:nth-child(even) {
-    background: #f9f9f9;
-}
+.sale-table tbody tr:nth-child(even) { background: #f9f9f9; }
+.sale-table tbody tr:hover { background: #e0f2f1; }
 
-.sale-table tbody tr:hover {
-    background: #e0f2f1;
-}
-
-/* PRODUCT DETAILS (Desktop/Tablet Base) */
+/* PRODUCT DETAILS */
 .product-detail-container {
     display: flex;
     gap: 40px;
-    max-width: 1200px;
-    margin: 40px auto; 
+    margin: 40px auto;
     padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
     background: var(--card-background);
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    height: auto;
-    width: 100%;
+    box-shadow: 0 4px 15px rgba(0,0,0,.05);
 }
 
 .product-image {
     flex: 1;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1/1;
     max-height: 70vh;
     overflow: hidden;
 }
@@ -274,9 +265,9 @@ h2 {
 .product-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
     display: block;
+    border-radius: 8px;
+    object-fit: cover;
 }
 
 .product-info {
@@ -290,123 +281,114 @@ h2 {
 }
 
 .price-large {
-    color: var(--secondary-color);
-    font-size: 2.5em;
-    font-weight: bold;
     margin: 10px 0 20px;
+    font-weight: bold;
+    font-size: 2.5em;
+    color: var(--secondary-color);
 }
 
 .description-box {
     margin-top: 30px;
     padding: 15px;
     background: #fff;
-    border: 1px solid #ddd;
     border-radius: 5px;
+    border: 1px solid #ddd;
 }
 
-/* Default state for cart button */
+/* Add-to-cart button (desktop) */
 .add-to-cart-btn {
-    width: 100%;
     margin-top: 20px;
+    width: 100%;
     font-size: 1.2em;
     font-weight: bold;
     background: #ff5722;
 }
 
-.add-to-cart-btn:hover {
-    background: #e64a19;
-}
+.add-to-cart-btn:hover { background: #e64a19; }
 
 /* FOOTER */
 footer {
-    background: var(--text-color);
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 0.9em;
     position: fixed;
     bottom: 0;
     width: 100%;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    background: var(--text-color);
+    color: #fff;
+    padding: 10px 0;
+    font-size: .9em;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0,0,0,.1);
 }
 
-/* --- RESPONSIVENESS (Mobile Devices) --- */
-@media (max-width: 768px){
+/* ===== RESPONSIVE FIXES (MOBILE) ===== */
+@media (max-width: 768px) {
     
-    /* 1. HEADER/NAVIGATION FIX */
+    /* Navigation stacks vertically on small screens */
     header {
-        flex-direction: column; 
+        flex-direction: column;
         align-items: flex-start;
+        position: relative;
         padding-bottom: 10px;
-        position: relative; 
     }
     
     header h1 {
+        width: 100%;
         margin-bottom: 10px;
-        width: 100%; 
     }
 
     nav {
         width: 100%;
-        display: flex; 
-        flex-direction: column; 
+        display: flex;
+        flex-direction: column;
     }
     
     nav a {
-        display: block; 
+        display: block;
         margin: 5px 0;
-        padding: 10px; 
-        text-align: center;
-        background: rgba(255, 255, 255, 0.15); 
-        margin-left: 0;
+        padding: 10px;
         border-radius: 3px;
-        font-size: 0.9em; 
+        font-size: .9em;
+        background: rgba(255,255,255,.15);
+        text-align: center;
     }
     
-    /* 2. PRODUCT DETAIL FIX */
+    /* Product details stack vertically */
     .product-detail-container {
-        flex-direction: column; 
+        flex-direction: column;
         gap: 20px;
+        padding: 0;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
         max-width: 100%;
-        padding: 0;            
-        margin: 0;             
-        border-radius: 0;      
-        box-shadow: none;      
-        background: var(--background-color); 
+        background: var(--background-color);
     }
 
     .product-image {
-        max-height: 40vh; 
-        aspect-ratio: auto;
         width: 100%;
+        max-height: 40vh;
+        aspect-ratio: auto; /* let it flow naturally */
     }
 
-    .product-image img {
-        border-radius: 0; 
-    }
+    .product-image img { border-radius: 0; }
 
     .product-info {
-        padding: 0 15px 150px 15px; 
         flex: auto;
+        padding: 0 15px 150px; /* extra space for sticky button */
     }
     
-    .product-info h2 {
-        font-size: 1.8em; 
-    }
-
-    .price-large {
-        font-size: 2em;
-    }
+    .product-info h2 { font-size: 1.8em; }
+    .price-large { font-size: 2em; }
     
+    /* Button becomes sticky footer */
     .add-to-cart-btn {
-        position: fixed; 
-        bottom: 0;
+        position: fixed;
         left: 0;
         right: 0;
-        z-index: 90;
+        bottom: 0;
         margin-top: 0;
+        width: 100%;
         padding: 15px 0;
         border-radius: 0;
-        width: 100%; 
+        z-index: 90;
     }
 }
