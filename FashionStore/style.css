@@ -241,11 +241,13 @@ h2 {
     display: flex;
     gap: 40px;
     max-width: 1200px;
-    margin: 40px auto;
+    margin: auto;
     padding: 20px;
     background: var(--card-background);
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    height: auto;
+    width: 100%;
 }
 
 .product-image {
@@ -260,6 +262,7 @@ h2 {
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
+    display: block;
 }
 
 .product-info {
@@ -310,4 +313,10 @@ footer {
     bottom: 0;
     width: 100%;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 768px){
+    nav ul{
+        flex-direction: column;
+        align-items: center;
+    }
 }
