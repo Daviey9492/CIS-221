@@ -55,7 +55,7 @@ nav a:hover {
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* --- STANDARD SECTIONS (No changes below unless specifically related to the header) --- */
+/* --- STANDARD SECTIONS --- */
 
 /* PRODUCT SHOWCASE */
 .showcase {
@@ -71,22 +71,29 @@ h2 {
     font-size: 2em;
 }
 
-/* CATEGORY TABS */
+/* CATEGORY TABS (UPDATED FOR HORIZONTAL SCROLLING) */
 #category-tabs {
     margin-bottom: 30px;
     border-bottom: 2px solid #ddd;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: flex-start; /* Aligns tabs to the left */
+    flex-wrap: nowrap; /* CRUCIAL: Prevents wrapping */
+    overflow-x: auto; /* CRUCIAL: Enables horizontal scrolling */
+    padding-bottom: 5px; /* Adds space for potential scrollbar */
+    -webkit-overflow-scrolling: touch; /* Improves scrolling performance on iOS */
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .tab-button {
     background: transparent;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 15px; /* Slightly reduced horizontal padding */
     cursor: pointer;
-    font-size: 1.1em;
+    font-size: 1em; /* Reduced default font size slightly */
     transition: 0.3s;
+    flex-shrink: 0; /* Prevents buttons from shrinking smaller than content */
+    white-space: nowrap; /* Ensures text doesn't wrap inside the button */
 }
 
 .tab-button:hover:not(.active) {
@@ -326,7 +333,7 @@ footer {
 /* --- RESPONSIVENESS (Mobile Devices) --- */
 @media (max-width: 768px){
     
-    /* 1. HEADER/NAVIGATION FIX: Stacks items for better mobile tapping. */
+    /* 1. HEADER/NAVIGATION FIX */
     header {
         flex-direction: column; 
         align-items: flex-start;
@@ -353,11 +360,10 @@ footer {
         background: rgba(255, 255, 255, 0.15); 
         margin-left: 0;
         border-radius: 3px;
-        /* Smaller font size for navigation links on mobile */
         font-size: 0.9em; 
     }
     
-    /* 2. PRODUCT DETAIL FIX: Edge-to-edge layout with sticky button. */
+    /* 2. PRODUCT DETAIL FIX */
     .product-detail-container {
         flex-direction: column; 
         gap: 20px;
