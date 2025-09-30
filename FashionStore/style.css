@@ -1,15 +1,13 @@
 :root {
-    /* Theme colors (I went with a purple + warm brown combo) */
-    --primary-color: #5E35B1;
-    --secondary-color: #8D6E63;
-    --background-color: #ffffff;
-    --card-background: #f8f8f8;
-    --text-color: #333;
+    --primary-color: #5E35B1;      /* Purple accent */
+    --secondary-color: #8D6E63;    /* Warm earthy tone */
+    --background-color: #ffffff;   /* Page background */
+    --card-background: #f8f8f8;    /* Card containers */
+    --text-color: #333;            /* Default text */
 }
 
-/* General body setup */
 body {
-    font-family: Arial, sans-serif; /* I like Arial for clean look */
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background: var(--background-color);
@@ -17,71 +15,72 @@ body {
 }
 
 main {
-    padding-bottom: 50px; /* keep space for footer */
+    padding-bottom: 50px; /* Leaves room for footer */
 }
 
 /* HEADER + NAVIGATION */
 header {
+    display: flex;
+    justify-content: space-between; /* Title left, nav right */
+    align-items: center;
     background: var(--primary-color);
     color: #fff;
     padding: 15px 20px;
-    display: flex;
-    justify-content: space-between; /* title left / nav right */
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
     z-index: 100;
+    flex-wrap: wrap; /* Allows title and nav to stack if needed */
 }
 
 header h1 {
     margin: 0;
-    color: #fff; /* redundant but explicit */
+    color: #fff;
 }
 
 nav a {
-    margin-left: 20px;
-    padding: 5px 10px;
     color: #fff;
     text-decoration: none;
+    margin-left: 20px;
+    padding: 5px 10px;
     border-radius: 5px;
-    transition: background .3s;
+    transition: background 0.3s;
 }
 
 nav a:hover {
-    background: rgba(255,255,255,.2);
+    background: rgba(255, 255, 255, 0.2);
 }
 
-/* PRODUCT SHOWCASE SECTION */
+/* PRODUCT SHOWCASE */
 .showcase {
-    text-align: center;
+    max-width: 1200px;
     margin: 40px auto;
     padding: 20px;
-    max-width: 1200px;
+    text-align: center;
 }
 
 h2 {
-    margin-bottom: 30px;
     color: var(--primary-color);
+    margin-bottom: 30px;
     font-size: 2em;
 }
 
 /* CATEGORY TABS */
 #category-tabs {
+    margin-bottom: 30px;
+    border-bottom: 2px solid #ddd;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #ddd;
 }
 
 .tab-button {
-    border: none;
-    cursor: pointer;
-    padding: 10px 20px;
     background: transparent;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
     font-size: 1.1em;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .tab-button:hover:not(.active) {
@@ -89,21 +88,21 @@ h2 {
 }
 
 .tab-button.active {
-    font-weight: bold;
-    border-bottom: 3px solid var(--primary-color);
     color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+    font-weight: bold;
 }
 
-/* PRODUCT GRID + CARDS */
+/* PRODUCT GRID */
 .tab-content {
     display: none;
     padding: 20px 0;
-    animation: fadeIn .5s;
+    animation: fadeIn 0.5s;
 }
 
 @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 .product-grid {
@@ -111,69 +110,69 @@ h2 {
     gap: 30px;
 }
 
-/* normal grid (main showcase) */
+/* Main grid (all products) */
 .standard-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     justify-items: center;
 }
 
-/* scrolling grid (for categories) */
+/* Horizontal scroll for categories */
 .horizontal-scroll {
     grid-template-columns: repeat(13, 300px);
     overflow-x: auto;
     overflow-y: hidden;
     padding-bottom: 10px;
-    justify-content: flex-start;
+    justify-content: start;
 }
 
 .product-card {
     background: var(--card-background);
-    border-radius: 8px;
     padding: 15px;
-    min-width: 250px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,.1);
-    transition: transform .3s, box-shadow .3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    min-width: 250px;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,.15);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .product-card img {
     width: 100%;
     height: 250px;
-    margin-bottom: 10px;
-    border-radius: 4px;
     object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
 }
 
 .product-card h3 {
-    margin: 10px 0;
     font-size: 1.3em;
     color: var(--text-color);
+    margin: 10px 0;
 }
 
 .product-card .price {
-    margin: 10px 0 20px;
+    color: var(--secondary-color);
     font-size: 1.2em;
     font-weight: bold;
-    color: var(--secondary-color);
+    margin: 10px 0 20px;
 }
 
 /* BUTTONS */
 .button, .add-to-cart-btn {
     display: inline-block;
     padding: 10px 20px;
+    background: var(--secondary-color);
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
     text-align: center;
-    background: var(--secondary-color);
-    color: #fff;
-    transition: background .3s;
+    transition: background 0.3s;
     text-decoration: none;
 }
 
@@ -183,43 +182,42 @@ h2 {
 
 /* BENEFITS */
 #benefits {
-    text-align: center;
     margin: 40px auto;
-    padding: 0 20px;
     max-width: 1200px;
+    padding: 0 20px;
+    text-align: center;
 }
 
 .benefits-list {
+    max-width: 800px;
     margin: 20px auto;
     text-align: left;
-    max-width: 800px;
 }
 
 .benefits-list p {
-    margin: 15px 0;
-    padding: 15px;
-    font-size: 1.1em;
     background: #e8f5e9;
+    padding: 15px;
+    margin: 15px 0;
     border-left: 5px solid var(--primary-color);
     border-radius: 5px;
+    font-size: 1.1em;
 }
 
 /* SALES TABLE */
 #sales {
-    text-align: center;
     margin: 40px 0;
+    text-align: center;
 }
 
 .sale-table {
     width: 80%;
     margin: 20px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,.1);
 }
 
-.sale-table th, 
-.sale-table td {
+.sale-table th, .sale-table td {
     padding: 15px;
     text-align: left;
     border-bottom: 1px solid #100ce728;
@@ -227,8 +225,8 @@ h2 {
 
 .sale-table th {
     background: var(--primary-color);
-    font-weight: bold;
     color: #fff;
+    font-weight: bold;
 }
 
 .sale-table tbody tr:nth-child(even) {
@@ -239,33 +237,33 @@ h2 {
     background: #e0f2f1;
 }
 
-/* PRODUCT DETAILS */
+/* PRODUCT DETAILS (Desktop/Tablet) */
 .product-detail-container {
     display: flex;
     gap: 40px;
-    width: 100%;
-    margin: auto;
-    padding: 20px;
-    height: auto;
     max-width: 1200px;
+    margin: 40px auto; /* Added margin-top for desktop */
+    padding: 20px;
     background: var(--card-background);
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    height: auto;
+    width: 100%;
 }
 
 .product-image {
     flex: 1;
+    aspect-ratio: 1 / 1;
     max-height: 70vh;
-    aspect-ratio: 1/1;
     overflow: hidden;
 }
 
 .product-image img {
-    display: block;
     width: 100%;
     height: 100%;
-    border-radius: 8px;
     object-fit: cover;
+    border-radius: 8px;
+    display: block;
 }
 
 .product-info {
@@ -279,18 +277,18 @@ h2 {
 }
 
 .price-large {
-    margin: 10px 0 20px;
+    color: var(--secondary-color);
     font-size: 2.5em;
     font-weight: bold;
-    color: var(--secondary-color);
+    margin: 10px 0 20px;
 }
 
 .description-box {
     margin-top: 30px;
     padding: 15px;
+    background: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
-    background: #fff;
 }
 
 .add-to-cart-btn {
@@ -298,7 +296,7 @@ h2 {
     margin-top: 20px;
     font-size: 1.2em;
     font-weight: bold;
-    background: #ff5722; /* I chose a bold accent here */
+    background: #ff5722;
 }
 
 .add-to-cart-btn:hover {
@@ -307,44 +305,89 @@ h2 {
 
 /* FOOTER */
 footer {
-    text-align: center;
     background: var(--text-color);
     color: #fff;
-    font-size: .9em;
+    text-align: center;
     padding: 10px 0;
-    width: 100%;
+    font-size: 0.9em;
     position: fixed;
     bottom: 0;
-    box-shadow: 0 -2px 5px rgba(0,0,0,.1);
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* MOBILE RESPONSIVENESS */
-@media (max-width: 768px) {
-    /* Navigation could stack if needed */
-    nav {
-        /* todo: adjust later if mobile menu required */
+/* RESPONSIVENESS (Mobile Devices) */
+@media (max-width: 768px){
+    
+    /* 1. Header/Navigation Fix */
+    header {
+        flex-direction: column; /* Stack header content vertically */
+        align-items: flex-start;
+        padding-bottom: 10px;
+    }
+    
+    header h1 {
+        margin-bottom: 10px;
     }
 
-    /* Product detail view adapts */
+    nav {
+        width: 100%;
+        text-align: center;
+    }
+    
+    nav a {
+        display: block; /* Make links full width and stack */
+        margin: 5px 0;
+        padding: 8px 10px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.1); /* Subtle background for links */
+        margin-left: 0;
+    }
+    
+    /* 2. Product Detail Fix (Mobile Friendly) */
     .product-detail-container {
-        flex-direction: column;
+        flex-direction: column; /* Image on top, info below */
         gap: 20px;
-        padding: 15px;
+        max-width: 100%;
+        padding: 0;            /* Remove container padding for edge-to-edge look */
+        margin: 0;             /* Remove margin, use full vertical space */
+        border-radius: 0;      /* Remove rounded corners */
+        box-shadow: none;      /* Remove shadow/card appearance */
+        background: var(--background-color); 
     }
 
     .product-image {
-        max-height: 50vh; /* shrink on mobile */
+        max-height: 40vh; /* Smaller image size for better mobile scrolling */
+        aspect-ratio: auto;
+        width: 100%;
+    }
+
+    .product-image img {
+        border-radius: 0; /* Remove image rounded corners */
     }
 
     .product-info {
+        padding: 0 15px 150px 15px; /* Add horizontal padding + large bottom padding to account for sticky button */
         flex: auto;
     }
-
+    
     .product-info h2 {
-        font-size: 2em;
+        font-size: 1.8em; 
     }
 
     .price-large {
         font-size: 2em;
+    }
+    
+    .add-to-cart-btn {
+        position: fixed; /* Changed to fixed for constant visibility */
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 90;
+        margin-top: 0;
+        padding: 15px 0;
+        border-radius: 0;
+        width: 100%; /* Ensure full width when fixed */
     }
 }
