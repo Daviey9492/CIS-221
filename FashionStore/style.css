@@ -18,7 +18,7 @@ main {
     padding-bottom: 50px; /* Leaves room for footer */
 }
 
-/* HEADER + NAVIGATION */
+/* HEADER + NAVIGATION (Desktop Base) */
 header {
     display: flex;
     justify-content: space-between; /* Title left, nav right */
@@ -30,7 +30,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 100;
-    flex-wrap: wrap; /* Allows title and nav to stack if needed */
+    flex-wrap: wrap; 
 }
 
 header h1 {
@@ -50,6 +50,8 @@ nav a {
 nav a:hover {
     background: rgba(255, 255, 255, 0.2);
 }
+
+/* --- STANDARD SECTIONS --- */
 
 /* PRODUCT SHOWCASE */
 .showcase {
@@ -237,12 +239,12 @@ h2 {
     background: #e0f2f1;
 }
 
-/* PRODUCT DETAILS (Desktop/Tablet) */
+/* PRODUCT DETAILS (Desktop/Tablet Base) */
 .product-detail-container {
     display: flex;
     gap: 40px;
     max-width: 1200px;
-    margin: 40px auto; /* Added margin-top for desktop */
+    margin: 40px auto; 
     padding: 20px;
     background: var(--card-background);
     border-radius: 10px;
@@ -291,6 +293,7 @@ h2 {
     border-radius: 5px;
 }
 
+/* Default state for cart button */
 .add-to-cart-btn {
     width: 100%;
     margin-top: 20px;
@@ -316,58 +319,63 @@ footer {
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* RESPONSIVENESS (Mobile Devices) */
+/* --- RESPONSIVENESS (Mobile Devices) --- */
 @media (max-width: 768px){
     
-    /* 1. Header/Navigation Fix */
+    /* 1. HEADER/NAVIGATION FIX: Stacks items for better mobile tapping. */
     header {
-        flex-direction: column; /* Stack header content vertically */
+        flex-direction: column; 
         align-items: flex-start;
         padding-bottom: 10px;
+        position: relative; /* Unstick the header to allow scrolling if navigation is very long */
     }
     
     header h1 {
         margin-bottom: 10px;
+        width: 100%; /* Ensure title uses full width */
     }
 
     nav {
         width: 100%;
-        text-align: center;
+        display: flex; /* Use flex for navigation links */
+        flex-direction: column; /* Stack the links */
     }
     
     nav a {
-        display: block; /* Make links full width and stack */
+        display: block; 
         margin: 5px 0;
-        padding: 8px 10px;
+        padding: 10px; /* Increased padding for better tap area */
         text-align: center;
-        background: rgba(255, 255, 255, 0.1); /* Subtle background for links */
+        background: rgba(255, 255, 255, 0.15); 
         margin-left: 0;
+        border-radius: 3px;
     }
     
-    /* 2. Product Detail Fix (Mobile Friendly) */
+    /* 2. PRODUCT DETAIL FIX: Edge-to-edge layout with sticky button. */
     .product-detail-container {
-        flex-direction: column; /* Image on top, info below */
+        flex-direction: column; 
         gap: 20px;
         max-width: 100%;
-        padding: 0;            /* Remove container padding for edge-to-edge look */
-        margin: 0;             /* Remove margin, use full vertical space */
-        border-radius: 0;      /* Remove rounded corners */
-        box-shadow: none;      /* Remove shadow/card appearance */
+        padding: 0;            
+        margin: 0;             
+        border-radius: 0;      
+        box-shadow: none;      
         background: var(--background-color); 
     }
 
     .product-image {
-        max-height: 40vh; /* Smaller image size for better mobile scrolling */
+        max-height: 40vh; 
         aspect-ratio: auto;
         width: 100%;
     }
 
     .product-image img {
-        border-radius: 0; /* Remove image rounded corners */
+        border-radius: 0; 
     }
 
     .product-info {
-        padding: 0 15px 150px 15px; /* Add horizontal padding + large bottom padding to account for sticky button */
+        /* Added large bottom padding (150px) to prevent content from being hidden by the sticky button/footer */
+        padding: 0 15px 150px 15px; 
         flex: auto;
     }
     
@@ -380,7 +388,7 @@ footer {
     }
     
     .add-to-cart-btn {
-        position: fixed; /* Changed to fixed for constant visibility */
+        position: fixed; 
         bottom: 0;
         left: 0;
         right: 0;
@@ -388,6 +396,6 @@ footer {
         margin-top: 0;
         padding: 15px 0;
         border-radius: 0;
-        width: 100%; /* Ensure full width when fixed */
+        width: 100%; 
     }
 }
