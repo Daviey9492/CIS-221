@@ -13,11 +13,8 @@
   <nav>
     <a href="index.html">Home</a>
     <a href="#products">Shop</a>
-    <a href="cart.html">Cart 🛒</a>
     <a href="#sales">Sales</a>
     <a href="#benefits">Why Us?</a>
-    <a href="add_stock.html">Add Stock ➕</a>
-    <a href="inventory.html">Inventory 📊</a>
   </nav>
 </header>
 
@@ -140,16 +137,5 @@
 <footer>
   <p>&copy; 2025 Fashion Store | CIS 221</p>
 </footer>
-
-<script>
-  function filterProducts(evt, category) {
-    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-    evt.currentTarget.classList.add('active');
-
-    document.querySelectorAll('.product-card').forEach(card => {
-      card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
-    });
-  }
-</script>
 </body>
 </html>
