@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fashion Store</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fashion Store - CIS 221</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-  <header>
-    <h1>Fashion Store</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="#products">Shop</a>
-      <a href="#sales">Sales</a>
-      <a href="#benefits">Why Us</a>
-    </nav>
-  </header>
+<body>
+<header>
+  <h1>Fashion Store</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#products">Shop</a>
+    <a href="cart.html">Cart 🛒</a>
+    <a href="#sales">Sales</a>
+    <a href="#benefits">Why Us?</a>
+    <a href="add_stock.html">Add Stock ➕</a>
+    <a href="inventory.html">Inventory 📊</a>
+  </nav>
+</header>
 
 <main>
   <!-- PRODUCTS -->
@@ -32,30 +35,86 @@
       <button class="tab-button" onclick="filterProducts(event, 'shoes')">Shoes</button>
     </div>
 
-    <!-- SINGLE GRID (no repetition) -->
+    <!-- Product Grid -->
     <div class="product-grid standard-grid" id="productGrid">
-      {% for id,img,name,price,category in [
-        [101,'placeholder_dress_1.jpg','Crimson Evening Gown','5,500','dresses'],
-        [102,'placeholder_dress_2.jpg','Floral Summer Maxi','3,500','dresses'],
-        [103,'placeholder_dress_3.jpg','Classic Black Dress','2,700','dresses'],
-        [104,'placeholder_dress_4.jpg','Sequined Cocktail','4,300','dresses'],
-        [201,'placeholder_coat_1.jpg','Classic Trench Coat','5,800','outerwear'],
-        [202,'placeholder_jacket_1.jpg','Vintage Denim Jacket','2,000','outerwear'],
-        [203,'placeholder_blazer_1.jpg','Plaid Wool Blazer','5,600','outerwear'],
-        [301,'placeholder_bag_1.jpg','Designer Leather Tote','2,500','accessories'],
-        [302,'placeholder_scarf_1.jpg','Hand-Printed Silk Scarf','1,500','accessories'],
-        [303,'placeholder_necklace_1.jpg','Layered Gold Necklace','4,000','accessories'],
-        [304,'placeholder_belt_1.jpg','Premium Leather Belt','4,500','accessories'],
-        [401,'placeholder_shoe_1.jpg','Stiletto High Heels','3,000','shoes'],
-        [402,'placeholder_shoe_2.jpg','Urban Canvas Sneakers','2,300','shoes']
-      ] %}
-      <div class="product-card" data-category="{{ category }}">
-        <img src="{{ url_for('static', filename=img) }}" alt="{{ name }}">
-        <h3>{{ name }}</h3>
-        <p class="price">KSh {{ price }}</p>
-        <a href="{{ url_for('product_details', id=id) }}" class="button">View Details</a>
+      <div class="product-card" data-category="dresses">
+        <img src="placeholder_dress_1.jpg" alt="Crimson Evening Gown">
+        <h3>Crimson Evening Gown</h3>
+        <p class="price">KSh 5,500</p>
+        <a href="product_details.html?id=101" class="button">View Details</a>
       </div>
-      {% endfor %}
+      <div class="product-card" data-category="dresses">
+        <img src="placeholder_dress_2.jpg" alt="Floral Summer Maxi">
+        <h3>Floral Summer Maxi</h3>
+        <p class="price">KSh 3,500</p>
+        <a href="product_details.html?id=102" class="button">View Details</a>
+      </div>
+      <div class="product-card" data-category="dresses">
+        <img src="placeholder_dress_3.jpg" alt="Classic Black Dress">
+        <h3>Classic Black Dress</h3>
+        <p class="price">KSh 2,700</p>
+        <a href="product_details.html?id=103" class="button">View Details</a>
+      </div>
+      <div class="product-card" data-category="dresses">
+        <img src="placeholder_dress_4.jpg" alt="Sequined Cocktail">
+        <h3>Sequined Cocktail</h3>
+        <p class="price">KSh 4,300</p>
+        <a href="product_details.html?id=104" class="button">View Details</a>
+      </div>
+      <div class="product-card" data-category="outerwear">
+        <img src="placeholder_coat_1.jpg" alt="Classic Trench Coat">
+        <h3>Classic Trench Coat</h3>
+        <p class="price">KSh 5,800</p>
+        <a href="product_details.html?id=201" class="button">View Details</a>
+      </div>
+      <div class="product-card" data-category="outerwear">
+        <img src="placeholder_jacket_1.jpg" alt="Vintage Denim Jacket">
+        <h3>Vintage Denim Jacket</h3>
+        <p class="price">KSh 2,000</p>
+        <a href="product_details.html?id=202" class="button">View Details</a>
+      </div>
+      <div class="product-card" data-category="outerwear">
+        <img src="placeholder_blazer_1.jpg" alt="Plaid Wool Blazer">
+        <h3>Plaid Wool Blazer</h3>
+        <p class="price">KSh 5,600</p>
+        <a href="product_details.html?id=203" class="button">View Details</a>
+      </div>
+      <div class="product-card" data-category="accessories">
+        <img src="placeholder_bag_1.jpg" alt="Designer Leather Tote">
+        <h3>Designer Leather Tote</h3>
+        <p class="price">KSh 2,500</p>
+        <a href="product_details.html?id=301" class="button">View Details</a>
+      </div>
+      <div class="product-card" data-category="accessories">
+        <img src="placeholder_scarf_1.jpg" alt="Hand-Printed Silk Scarf">
+        <h3>Hand-Printed Silk Scarf</h3>
+        <p class="price">KSh 1,500</p>
+        <a href="product_details.html?id=302" class="button">View Details</a>
+      </div>
+      <div class="product-card" data-category="accessories">
+        <img src="placeholder_necklace_1.jpg" alt="Layered Gold Necklace">
+        <h3>Layered Gold Necklace</h3>
+        <p class="price">KSh 4,000</p>
+        <a href="product_details.html?id=303" class="button">View Details</a>
+      </div>
+      <div class="product-card" data-category="accessories">
+        <img src="placeholder_belt_1.jpg" alt="Premium Leather Belt">
+        <h3>Premium Leather Belt</h3>
+        <p class="price">KSh 4,500</p>
+        <a href="product_details.html?id=304" class="button">View Details</a>
+      </div>
+      <div class="product-card" data-category="shoes">
+        <img src="placeholder_shoe_1.jpg" alt="Stiletto High Heels">
+        <h3>Stiletto High Heels</h3>
+        <p class="price">KSh 3,000</p>
+        <a href="product_details.html?id=401" class="button">View Details</a>
+      </div>
+      <div class="product-card" data-category="shoes">
+        <img src="placeholder_shoe_2.jpg" alt="Urban Canvas Sneakers">
+        <h3>Urban Canvas Sneakers</h3>
+        <p class="price">KSh 2,300</p>
+        <a href="product_details.html?id=402" class="button">View Details</a>
+      </div>
     </div>
   </section>
 
